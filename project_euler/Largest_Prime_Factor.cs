@@ -1,29 +1,12 @@
 ﻿namespace project_euler;
 
-public class Largest_Prime_Factor
+public class LargestPrimeFactor
 {
     public static long Main(long n)
     {
         long largest=0;
-
-        for (int i = 0; i < 7; i++)
-        {
-            if ((n - i) % 2 == 0 || (n - i) % 3 == 0)
-            {
-                continue;
-            }
-            for (int j = 5; j*j < (n - i); j+=6)
-            {
-                if ((n - i) % j == 0 || (n-i) % (j + 2) == 0)
-                {
-                    continue;
-                }
-            }
-            largest = (n - i);
-            break;
-        }
         
-        for (long i = 5; i <= n/2; i+=6)
+        /*for (long i = 5; i <= n/2; i+=6)
         {
             if (n % i == 0)
             {
@@ -32,7 +15,34 @@ public class Largest_Prime_Factor
             {
                 largest = (i + 2);
             }
+        }*/
+
+        for (long i = 2; i * i <= n; i++)
+        {
+            if (n % i != 0) continue;
+            var tempIndex=i;
+            var tempPrime= (n / i);
+            if (tempPrime % 2 == 0 || tempPrime % 3 == 0)
+                continue;
+            for (long j = 5; j * j <= tempPrime; j += 6)
+            {
+                if (tempPrime % i == 0 || tempPrime % (i + 2) == 0)
+                {
+                    tempIndex++;
+                    break;
+                }
+            }
+
+            if (i == tempIndex)
+            {
+                largest = tempPrime;
+            }
+            else
+            {
+                tempIndex--;
+            }
         }
+
         return largest;
     }
 }
