@@ -8,4 +8,4 @@ using project_euler;
 //Console.WriteLine(LargestPalindromeProduct.Main(3));
 //Console.WriteLine(SmallestMultiple.Main(20));
 //Console.WriteLine(SumSquareDifference.Main(100));
-Console.WriteLine();
+Console.WriteLine(_10_001stPrime.Main(10001));
