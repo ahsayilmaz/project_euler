@@ -6,4 +6,6 @@ using project_euler;
 //Console.WriteLine(Even_Fibonacci_Numbers.Main(4000000));
 //Console.WriteLine(LargestPrimeFactor.Main(600851475143));
 //Console.WriteLine(LargestPalindromeProduct.Main(3));
-Console.WriteLine(SmallestMultiple.Main(20));
+//Console.WriteLine(SmallestMultiple.Main(20));
+//Console.WriteLine(SumSquareDifference.Main(100));
+Console.WriteLine();
