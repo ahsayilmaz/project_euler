@@ -17,14 +17,14 @@ public class LargestPrimeFactor
             }
         }*/
 
-        for (long i = 2; i * i <= n; i++)
+        for (long i = 2; i * i < n; i++)
         {
             if (n % i != 0) continue;
             var tempIndex=i;
             var tempPrime= (n / i);
             if (tempPrime % 2 == 0 || tempPrime % 3 == 0)
                 continue;
-            for (long j = 5; j * j <= tempPrime; j += 6)
+            for (long j = 5; j * j < tempPrime; j += 6)
             {
                 if (tempPrime % i == 0 || tempPrime % (i + 2) == 0)
                 {
@@ -43,6 +43,15 @@ public class LargestPrimeFactor
             }
         }
 
+        /*long i = 2;
+        while (i <= n)
+        {
+            if (n % i == 0)
+            {
+                n= (n / i);
+            }
+            i++;
+        }*/
         return largest;
     }
 }
