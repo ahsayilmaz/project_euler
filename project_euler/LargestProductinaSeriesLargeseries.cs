@@ -2,46 +2,19 @@
 
 public class LargestProductinaSeriesLargeseries
 {
-    public static int LargestProductinaSeries(string n, int adjacent)
+    public static int LargestProductinaSeries(string series, int adjacent)
     {
-        
-        int[] digits = new int[adjacent];
-        int largestProduct = 1;
-        for (int i = 0; i < adjacent; i++)
+        int largestProduct = 0;
+        int length = series.Length;
+        for (int i = 0; i < length-adjacent; i++)
         {
-            if (i < n.Length)
+            int tempProduct = 1;
+            for (int j = 0; j < adjacent; j++)
             {
-                digits[i] = n[n.Length - 1 - i] - '0';
+                tempProduct *= series[i+j] - '0';
             }
-            else
-            {
-                digits[i] = 0;
-            }
-            largestProduct *= digits[i];
-            n.Remove(n.Length - 1, 1);
+            if(tempProduct > largestProduct) largestProduct = tempProduct;
         }
-
-        for (int i = 0; i < n.Length-adjacent; i++)
-        { 
-            int remainder = i % adjacent;
-            if (remainder < n.Length)
-            {
-                digits[remainder] = n[n.Length - 1 - remainder] - '0';
-            }
-            else
-            {
-                digits[remainder] = 0;
-            }
-            largestProduct *= digits[remainder];
-            n.Remove(n.Length - 1 - remainder, 1);
-            int tempProduct=1;
-            for (int j = 0; j < digits.Length; j++)
-            {
-                tempProduct *= digits[j];
-            }
-            if (largestProduct < tempProduct) largestProduct = tempProduct;
-        }
-        
         return largestProduct;
     }
 }
