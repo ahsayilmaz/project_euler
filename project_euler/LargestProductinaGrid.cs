@@ -2,7 +2,7 @@
 
 public class LargestProductinaGrid
 {
-    public static int Main(int adjacent, string n)
+    public static long Main(int adjacent, string n)
     {
         long largestProduct = 0;
         string[] temp = n.Split("\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
@@ -16,12 +16,54 @@ public class LargestProductinaGrid
         for (int i = 0; i < length; i++)
         {
             int gLength = grid[i].Length;
-            for (int j = 0; j < gLength; j++)
+            for (int j = 0; j < gLength-adjacent; j++)
             {
-                for (int k = 0; k < gLength; k++){}
+                int tempProduct = grid[i][j];
+                for (int k = j+1; k < adjacent - 1; k++)//yatay
+                {
+                    tempProduct *= grid[i][k];
+                }
+                if (tempProduct > largestProduct) largestProduct = tempProduct;
+                tempProduct = grid[j][i];
+                for (int l = j + 1; l < adjacent - 1; l++)//dikey
+                {
+                    tempProduct *= grid[l][i];
+                }
+                if (tempProduct > largestProduct) largestProduct = tempProduct;
+            }
+        }
+
+        for (int i = adjacent-1; i < length; i++)
+        {
+            for (int j = 0; j < i+1-adjacent; j++)
+            {
+                int tempProduct = grid[i-j][j];
+                for (int k = 1; k < adjacent; k++)// sağa yatık çapraz
+                {
+                    tempProduct *= grid[i-j-k][j+k];
+                }
+                if (tempProduct > largestProduct) largestProduct = tempProduct;
+                tempProduct = grid[length-i][length-j];
+                for (int k = 1; k < adjacent; k++)//sağa yatık çapraz 2. yarım
+                {
+                    tempProduct *= grid[length-(i-j-k)][length-(j+k)];
+                }
+                if (tempProduct > largestProduct) largestProduct = tempProduct;
+                tempProduct = grid[length-i][j];
+                for (int k = 1; k < adjacent; k++)//sola yatık çapraz
+                {
+                    tempProduct *= grid[length-(i-j-k)][j+k];
+                }
+                if (tempProduct > largestProduct) largestProduct = tempProduct;
+                tempProduct = grid[i][length-j];
+                for (int k = 1; k < adjacent; k++)
+                {
+                    tempProduct *= grid[i-j-k][length-(j + k)];
+                }
+                if (tempProduct > largestProduct) largestProduct = tempProduct;
             }
         }
         
-        return 0;
+        return largestProduct;
     }
 }
