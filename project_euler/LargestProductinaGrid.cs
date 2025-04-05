@@ -43,22 +43,22 @@ public class LargestProductinaGrid
                     tempProduct *= grid[i-j-k][j+k];
                 }
                 if (tempProduct > largestProduct) largestProduct = tempProduct;
-                tempProduct = grid[length-i][length-j];
+                tempProduct = grid[length-i-1][length-j-1];
                 for (int k = 1; k < adjacent; k++)//sağa yatık çapraz 2. yarım
                 {
-                    tempProduct *= grid[length-(i-j-k)][length-(j+k)];
+                    tempProduct *= grid[length-(i-j-k)-1][length-(j+k)-1];
                 }
                 if (tempProduct > largestProduct) largestProduct = tempProduct;
-                tempProduct = grid[length-i][j];
+                tempProduct = grid[length-i-1][j];
                 for (int k = 1; k < adjacent; k++)//sola yatık çapraz
                 {
-                    tempProduct *= grid[length-(i-j-k)][j+k];
+                    tempProduct *= grid[length-(i-j-k)-1][j+k];
                 }
                 if (tempProduct > largestProduct) largestProduct = tempProduct;
-                tempProduct = grid[i][length-j];
+                tempProduct = grid[i][length-j-1];
                 for (int k = 1; k < adjacent; k++)
                 {
-                    tempProduct *= grid[i-j-k][length-(j + k)];
+                    tempProduct *= grid[i-j-k][length-(j + k)-1];
                 }
                 if (tempProduct > largestProduct) largestProduct = tempProduct;
             }
