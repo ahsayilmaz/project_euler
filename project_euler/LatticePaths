@@ -1,9 +1,0 @@
-namespace project_euler;
-
-public class SummationofPrimes
-{
-    public static long Main(int number)
-    {
-return 0;
-}
-}
