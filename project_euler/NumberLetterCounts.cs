@@ -7,7 +7,6 @@ public class NumberLetterCounts
         int sum = 0;
         Dictionary<int,int> ones = new Dictionary<int, int>()
         {
-            { 0, "zero".Length },
             { 1, "one".Length },
             { 2, "two".Length },
             { 3, "three".Length },
@@ -44,13 +43,24 @@ public class NumberLetterCounts
             { 18, "eighteen".Length },
             { 19, "nineteen".Length }
         };
-        int twoDigits = n % 100;
-        n = n / 100;
-        if (twoDigits < 20)
-        {
-            return firstTens[twoDigits];
-        }
 
+        for (int i = 1; i < n; i++)
+        {
+            int twoDigits = i % 100;
+            int remainder = i / 100;
+            if (twoDigits < 20 && twoDigits>10)
+            {
+                sum+=firstTens[twoDigits];
+            }
+            else
+            {
+                sum+=ones[twoDigits%10];
+                twoDigits/=10;
+                sum+=tens[twoDigits];
+            }
+            sum+=ones[remainder]+"hundredand".Length;
+            Console.WriteLine(sum);
+        }
         return sum;
     }
 }
