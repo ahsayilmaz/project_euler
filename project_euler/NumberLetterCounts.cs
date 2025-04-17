@@ -5,45 +5,46 @@ public class NumberLetterCounts
     public static int Main(int n)
     {
         int sum = 0;
-        Dictionary<int,int> ones = new Dictionary<int, int>()
+        int[] ones =
         {
-            {0,0},
-            { 1, "one".Length },
-            { 2, "two".Length },
-            { 3, "three".Length },
-            { 4, "four".Length },
-            { 5, "five".Length },
-            { 6, "six".Length },
-            { 7, "seven".Length },
-            { 8, "eight".Length },
-            { 9, "nine".Length }
+            0,
+            "one".Length,
+            "two".Length,
+            "three".Length,
+            "four".Length,
+            "five".Length,
+            "six".Length,
+            "seven".Length,
+            "eight".Length,
+            "nine".Length,
         };
         
-        Dictionary<int,int> tens = new Dictionary<int, int>()
+        int[] tens =
         {
-            {0,0},
-            {10, "ten".Length },
-            { 20, "twenty".Length },
-            { 30, "thirty".Length },
-            { 40, "forty".Length },
-            { 50, "fifty".Length },
-            { 60, "sixty".Length },
-            { 70, "seventy".Length },
-            { 80, "eighty".Length },
-            { 90, "ninety".Length }
+            0,
+            "ten".Length ,
+            "twenty".Length ,
+            "thirty".Length ,
+            "forty".Length ,
+            "fifty".Length ,
+            "sixty".Length ,
+            "seventy".Length ,
+            "eighty".Length ,
+            "ninety".Length
         };
         
-        Dictionary<int,int> firstTens = new Dictionary<int, int>()
+        int[] firstTens =
         {
-            { 11, "eleven".Length },
-            { 12, "twelve".Length },
-            { 13, "thirteen".Length },
-            { 14, "fourteen".Length },
-            { 15, "fifteen".Length },
-            { 16, "sixteen".Length },
-            { 17, "seventeen".Length },
-            { 18, "eighteen".Length },
-            { 19, "nineteen".Length }
+            0,
+            "eleven".Length ,
+            "twelve".Length ,
+            "thirteen".Length ,
+            "fourteen".Length ,
+            "fifteen".Length ,
+            "sixteen".Length ,
+            "seventeen".Length ,
+            "eighteen".Length ,
+            "nineteen".Length
         };
 
         for (int i = 1; i < n; i++)
@@ -52,12 +53,12 @@ public class NumberLetterCounts
             int remainder = i / 100;
             if (twoDigits < 20 && twoDigits>10)
             {
-                sum+=firstTens[twoDigits];
+                sum+=firstTens[twoDigits-10];
             }
             else
             {
                 sum+=ones[twoDigits%10];
-                twoDigits-= (twoDigits % 10);
+                twoDigits/= 10;
                 sum+=tens[twoDigits];
             }
             if (i>=100)
