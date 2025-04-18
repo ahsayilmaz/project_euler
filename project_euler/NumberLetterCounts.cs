@@ -61,9 +61,13 @@ public class NumberLetterCounts
                 twoDigits/= 10;
                 sum+=tens[twoDigits];
             }
-            if (i>=100)
-                sum+=ones[remainder]+"hundredand".Length;
-            Console.WriteLine(sum);
+
+            if (i >= 100)
+            {
+                sum += ones[remainder] + "hundred".Length;
+                if (i % 100 != 0)
+                    sum += "and".Length;
+            }
         }
         return sum+"onethousand".Length;
     }
