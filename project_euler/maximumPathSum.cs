@@ -11,6 +11,16 @@ public class maximumPathSum
             triangle[i] = inputs[i].Split(' ').Select(int.Parse).ToArray();
         }
         
+        int length = inputs.Length;
+        
+        for (int i = 0; i < length; i++)
+        {
+            int sum = triangle[0][0];
+            for (int j = 0; j < length-1; j++)
+            {
+                
+            }
+        }
         return 0;
     }
 }
