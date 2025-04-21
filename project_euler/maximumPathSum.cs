@@ -13,14 +13,14 @@ public class maximumPathSum
         
         int length = inputs.Length;
         
-        for (int i = 0; i < length; i++)
+        for (int row = length-2; row >=0; row--)
         {
-            int sum = triangle[0][0];
-            for (int j = 0; j < length-1; j++)
+            for (int col = 0; col < triangle[row].Length; col++)
             {
-                
+                triangle[row][col] += Math.Max(triangle[row+1][col],triangle[row+1][col+1]);
             }
         }
-        return 0;
+        
+        return triangle[0][0];
     }
 }
