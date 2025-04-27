@@ -2,7 +2,7 @@
 
 public class LargeSum
 {
-    public static long Main(string n)
+    public static int Main(string n)
     {
         string[] numbers = n.Split("\n");
         string first10Digits = "";
@@ -16,7 +16,7 @@ public class LargeSum
                 tempSum += int.Parse(numbers[j][i].ToString());
             }
             int lastDigit = tempSum%10;
-            if (i <= 10)
+            if (i < 10)
             {
                 first10Digits = lastDigit+first10Digits;
             }
