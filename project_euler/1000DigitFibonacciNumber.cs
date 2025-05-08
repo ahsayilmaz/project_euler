@@ -3,7 +3,7 @@
 public class First1000DigitFibonacciNumber {
     public static string Main(int n)
     {
-        int count = 1;
+        int count = 2;
         long a = 0;
         long b = 1;
         
@@ -20,10 +20,11 @@ public class First1000DigitFibonacciNumber {
 
         while (bVeryLong.Length < 1000)
         {
+            aVeryLong = aVeryLong.PadLeft(bVeryLong.Length, '0');
             string nextFib ="";
             long sum = 0;
             int leftOver = 0;
-            for (int i = aVeryLong.Length; i>=17; i-=17)
+            for (int i = bVeryLong.Length; i>=17; i-=17)
             {
                 sum += Convert.ToInt64(aVeryLong.Substring(i-17, 17));
                 sum += Convert.ToInt64(bVeryLong.Substring(i-17, 17));
@@ -39,12 +40,12 @@ public class First1000DigitFibonacciNumber {
                 nextFib = (sum%10)+nextFib;
                 sum /= 10;
             }
-            nextFib = sum + nextFib;
+            if (sum > 0)
+                nextFib = sum + nextFib;
             if(bVeryLong.Length > aVeryLong.Length)
-                nextFib = bVeryLong.Substring(bVeryLong.Length-aVeryLong.Length)+nextFib;
+                nextFib = bVeryLong.Substring(0,bVeryLong.Length-aVeryLong.Length)+nextFib;
             aVeryLong = bVeryLong;
             bVeryLong = nextFib;
-            return bVeryLong;
             count++;
         }
 
