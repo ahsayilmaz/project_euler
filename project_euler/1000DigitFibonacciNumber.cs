@@ -1,68 +1,54 @@
-using System;
+namespace project_euler;
 
-namespace project_euler
-{
-    public class First1000DigitFibonacciNumber
+public class First1000DigitFibonacciNumber {
+    public static string Main(int n)
     {
-        private const int TargetDigitCount = 1000;
-        private const int ChunkSize = 17;        
-        private const long ModValue = 100000000000000000; 
-
-        public static int FindFirstFibonacciWithNDigits(int digitCount)
+        int count = 2;
+        long a = 0;
+        long b = 1;
+        
+        while (b.ToString().Length < 19 ) 
         {
-            int index = 2; // Fibonacci index starts at 2 (F1 = 1, F2 = 1)
-            string a = "0"; // First Fibonacci number
-            string b = "1"; // Second Fibonacci number
+            long nextFib = a + b;
+            a = b;
+            b = nextFib;
+            count++;
+        }
+        string aVeryLong = a.ToString();
+        string bVeryLong = b.ToString();
+        long modVeryLong = 100000000000000000;
 
-            while (b.Length < digitCount)
+        while (bVeryLong.Length < 1000)
+        {
+            aVeryLong = aVeryLong.PadLeft(bVeryLong.Length, '0');
+            string nextFib ="";
+            long sum = 0;
+            int leftOver = 0;
+            for (int i = bVeryLong.Length; i>=17; i-=17)
             {
-                string nextFib = AddLargeNumbers(a, b);
-                a = b;
-                b = nextFib;
-                index++;
+                sum += Convert.ToInt64(aVeryLong.Substring(i-17, 17));
+                sum += Convert.ToInt64(bVeryLong.Substring(i-17, 17));
+                nextFib = (sum%modVeryLong)+nextFib;
+                sum /= modVeryLong;
+                leftOver=i;
             }
 
-            return index;
-        }
-
-        private static string AddLargeNumbers(string num1, string num2)
-        {
-            // Pad the shorter number with leading zeros
-            num1 = num1.PadLeft(num2.Length, '0');
-            num2 = num2.PadLeft(num1.Length, '0');
-
-            long carry = 0;
-            string result = "";
-
-            // Process chunks of ChunkSize digits from the right
-            for (int i = num1.Length; i > 0; i -= ChunkSize)
+            for (int i = leftOver-1; i>=0; i--)
             {
-                int start = Math.Max(0, i - ChunkSize);
-                int length = i - start;
-
-                long chunk1 = long.Parse(num1.Substring(start, length));
-                long chunk2 = long.Parse(num2.Substring(start, length));
-
-                long sum = chunk1 + chunk2 + carry;
-                carry = sum / ModValue;
-
-                // Add the current chunk (padded with zeros if necessary)
-                result = (sum % ModValue).ToString().PadLeft(length, '0') + result;
+                sum += int.Parse(aVeryLong[i].ToString());
+                sum += int.Parse(bVeryLong[i].ToString());
+                nextFib = (sum%10)+nextFib;
+                sum /= 10;
             }
-
-            // Add any remaining carry
-            if (carry > 0)
-            {
-                result = carry + result;
-            }
-
-            return result.TrimStart('0'); // Remove leading zeros
+            if (sum > 0)
+                nextFib = sum + nextFib;
+            if(bVeryLong.Length > aVeryLong.Length)
+                nextFib = bVeryLong.Substring(0,bVeryLong.Length-aVeryLong.Length)+nextFib;
+            aVeryLong = bVeryLong;
+            bVeryLong = nextFib;
+            count++;
         }
 
-        public static void Main(string[] args)
-        {
-            int index = FindFirstFibonacciWithNDigits(TargetDigitCount);
-            Console.WriteLine($"The index of the first Fibonacci number with {TargetDigitCount} digits is: {index}");
-        }
+        return bVeryLong;
     }
 }
