@@ -1,54 +1,51 @@
 namespace project_euler;
 
+using System;
+
 public class First1000DigitFibonacciNumber {
-    public static string Main(int n)
+    public static int Main(int n)
     {
+        int targetDigits = n > 0 ? n : 1000;
         int count = 2;
-        long a = 0;
-        long b = 1;
-        
-        while (b.ToString().Length < 19 ) 
+        string a = "1";
+        string b = "1";
+
+        while (b.Length < targetDigits)
         {
-            long nextFib = a + b;
+            string nextFib = AddLargeNumbers(a, b);
             a = b;
             b = nextFib;
             count++;
         }
-        string aVeryLong = a.ToString();
-        string bVeryLong = b.ToString();
-        long modVeryLong = 100000000000000000;
 
-        while (bVeryLong.Length < 1000)
+        return count;
+    }
+
+    private static string AddLargeNumbers(string num1, string num2)
+    {
+        // Ensure num1 is the longer number
+        if (num1.Length < num2.Length)
         {
-            aVeryLong = aVeryLong.PadLeft(bVeryLong.Length, '0');
-            string nextFib ="";
-            long sum = 0;
-            int leftOver = 0;
-            for (int i = bVeryLong.Length; i>=17; i-=17)
-            {
-                sum += Convert.ToInt64(aVeryLong.Substring(i-17, 17));
-                sum += Convert.ToInt64(bVeryLong.Substring(i-17, 17));
-                nextFib = (sum%modVeryLong)+nextFib;
-                sum /= modVeryLong;
-                leftOver=i;
-            }
-
-            for (int i = leftOver-1; i>=0; i--)
-            {
-                sum += int.Parse(aVeryLong[i].ToString());
-                sum += int.Parse(bVeryLong[i].ToString());
-                nextFib = (sum%10)+nextFib;
-                sum /= 10;
-            }
-            if (sum > 0)
-                nextFib = sum + nextFib;
-            if(bVeryLong.Length > aVeryLong.Length)
-                nextFib = bVeryLong.Substring(0,bVeryLong.Length-aVeryLong.Length)+nextFib;
-            aVeryLong = bVeryLong;
-            bVeryLong = nextFib;
-            count++;
+            string temp = num1;
+            num1 = num2;
+            num2 = temp;
         }
 
-        return bVeryLong;
+        string result = "";
+        int carry = 0;
+
+        num2 = num2.PadLeft(num1.Length, '0');
+
+        for (int i = num1.Length - 1; i >= 0; i--)
+        {
+            int sum = int.Parse(num1[i].ToString()) + int.Parse(num2[i].ToString()) + carry;
+            carry = sum / 10;
+            result = (sum % 10) + result;
+        }
+
+        if (carry > 0)
+            result = carry + result;
+
+        return result;
     }
 }
