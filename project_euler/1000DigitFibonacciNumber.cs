@@ -2,6 +2,8 @@
 
 using System;
 
+using System;
+
 public class First1000DigitFibonacciNumber {
     public static int Main(int n)
     {
