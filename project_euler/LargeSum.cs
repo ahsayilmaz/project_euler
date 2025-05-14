@@ -23,6 +23,6 @@ public class LargeSum
             tempSum = tempSum/10;
         }
         first10Digits = tempSum+first10Digits;
-        return first10Digits.SubString(0,10);
+        return first10Digits.Substring(0,10);
     }
 }
