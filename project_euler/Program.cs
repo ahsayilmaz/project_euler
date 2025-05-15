@@ -22,4 +22,5 @@ using project_euler;
 //Console.WriteLine(countingSundays.Main(1901,2000));
 //Console.WriteLine(PowerDigitSum.GetPowerDigitSum(1000));
 //Console.WriteLine(First1000DigitFibonacciNumber.Main(1000));
-Console.WriteLine(FactorialDigitSum.Main(100));
+//Console.WriteLine(FactorialDigitSum.Main(100));
+Console.WriteLine(AmicableNumbers.Main(10000));
