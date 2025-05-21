@@ -25,4 +25,5 @@ using project_euler;
 //Console.WriteLine(FactorialDigitSum.Main(100));
 //Console.WriteLine(AmicableNumbers.Main(10000));
 //Console.WriteLine(NamesScores.Main("path of your file"));
-Console.WriteLine(NonAbundantsums.Main(28123));
+//Console.WriteLine(NonAbundantsums.Main(28123));
+Console.WriteLine(LexicographicPermutations.Main(1000000));
