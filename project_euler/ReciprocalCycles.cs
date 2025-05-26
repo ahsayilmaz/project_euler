@@ -6,40 +6,23 @@ public class ReciprocalCycles
     {
         string num;
         int longest = 0;
-        for (double i = 3; i < n; i++)
+        for (int i = 3; i < n; i++)
         {
-            num = (1 / i).ToString();
-            int Length = num.Length;
-            for (int j = 2; j < Length; j++)
+            string sequence = "";
+            int remainder = 1;
+            while (remainder != 0 && !sequence.Contains(remainder.ToString()))
             {
-                if (num[j] != '0')
-                {
-                    num = num.Substring(j);
-                    Length = num.Length;
-                    break;
-                }
+                sequence += remainder.ToString();
+                remainder = (remainder * 10) % i;
             }
-            string sequence = num[0].ToString();
-            int index = 0;
-            for (int j = 1; j < Length; j++)
+            if (remainder != 0)
             {
-                if (num[j] == sequence[index])
+                int cycleLength = sequence.Length - sequence.IndexOf(remainder.ToString());
+                if (cycleLength > longest)
                 {
-                    sequence += num[j];
-                    index = 0;
+                    longest = cycleLength;
+                    num = i.ToString();
                 }
-                else
-                {
-                   index++;
-                    if (index == sequence.Length)
-                    {
-                       index = 0;
-                    }
-                }
-            }
-            if(sequence.Length > longest)
-            {
-                longest = sequence.Length;
             }
         }
         return longest;
