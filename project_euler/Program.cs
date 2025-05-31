@@ -28,3 +28,4 @@ using project_euler;
 //Console.WriteLine(NonAbundantsums.Main(28123));
 //Console.WriteLine(LexicographicPermutations.Main(1000000));
 Console.WriteLine(ReciprocalCycles.Main(1000));
+Console.WriteLine(NumberSpiralDiagonals.Main(1001));
