@@ -11,6 +11,15 @@ public static class QuadraticPrimes
         {
             for (int j = -n; j < n; j++)
             {
+                int count = 0;
+                for (int k = 0; k < 100; i++)
+                {
+                    int result = k * k + i * k + j;
+                    if (result < 0)
+                    {
+                        break;
+                    }
+                }
             }
         }
         return product;
