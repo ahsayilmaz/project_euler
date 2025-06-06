@@ -10,15 +10,14 @@ public class DigitFifthpowers
         {
             double sum = 0;
             int temp = i;
-            while (0 < i)
+            while (0 < temp)
             {
-                sum += Math.Pow((i % 10),n);
-                i /= 10;
+                sum += Math.Pow((temp % 10),n);
+                temp /= 10;
             }
-
-            if (sum == temp)
+            if (sum == i)
             {
-                TotalSum += temp;
+                TotalSum += i;
             }
         }
         
