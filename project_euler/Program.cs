@@ -27,7 +27,8 @@ using project_euler;
 //Console.WriteLine(NamesScores.Main("path of your file"));
 //Console.WriteLine(NonAbundantsums.Main(28123));
 //Console.WriteLine(LexicographicPermutations.Main(1000000));
-Console.WriteLine(ReciprocalCycles.Main(1000));
+/*Console.WriteLine(ReciprocalCycles.Main(1000));
 Console.WriteLine(QuadraticPrimes.Main(1000));
 Console.WriteLine(NumberSpiralDiagonals.Main(1001));
-Console.WriteLine(DistinctPowers.Main(100));
+Console.WriteLine(DistinctPowers.Main(100));*/
+Console.WriteLine(DigitFifthpowers.Main(5));
