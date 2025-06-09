@@ -13,16 +13,19 @@ public class coinSums
             {
                 for (int k = 0; k <= limit - j-i; k += 20)
                 {
-                    for (int l = 0; l <= limit-i-j-k; l+=5)
+                    for (int l = 0; l <= limit - i - j - k; l += 10)
                     {
-                        for (int m = 0; m <= limit-i-j-k-l; m+=2)
+                        for (int m = 0; m <= limit - i - j - k - l; m += 5)
                         {
-                            howManyWays++;
+                            for (int o = 0; o <= limit - i - j - k - l - m; o += 2)
+                            {
+                                howManyWays++;
+                            }
                         }
                     }
                 }
             }
         }
-        return howManyWays;
+        return howManyWays+1;// +1 for 200 pence which is 2£ it self
     }
 }
