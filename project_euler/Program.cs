@@ -31,4 +31,5 @@ using project_euler;
 Console.WriteLine(QuadraticPrimes.Main(1000));
 Console.WriteLine(NumberSpiralDiagonals.Main(1001));
 Console.WriteLine(DistinctPowers.Main(100));*/
-Console.WriteLine(DigitFifthpowers.Main(5));
+//Console.WriteLine(DigitFifthpowers.Main(5));
+Console.WriteLine(coinSums.Main(2));
